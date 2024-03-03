@@ -1,0 +1,36 @@
+{
+  "name": "@ocopjs/auth-password",
+  "description": "OcopJS - Cung cấp cách xác thực cơ bản thông qua mật khẩu. 🇻🇳",
+  "version": "1.0.0",
+  "author": "ocopjs",
+  "scripts": {
+    "format": "prettier --write \"**/*.{ts,tsx,md,js}\"",
+    "semantic-release": "semantic-release"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://ocopee.com",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ocopjs/auth-password.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ocopjs/auth-password/issues"
+  },
+  "main": "./src/index.js",
+  "engines": {
+    "node": "16"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/npm": "^11.0.2",
+    "@semantic-release/release-notes-generator": "^12.1.0",
+    "prettier": "^3.2.5",
+    "semantic-release": "^23.0.2"
+  }
+}
