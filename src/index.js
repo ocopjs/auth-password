@@ -1,3 +1,4 @@
+const { SessionManager } = require("@ocopjs/session");
 /*
   TODO:
     - work out how (and when) to validate the username and password fields
@@ -5,8 +6,8 @@
 */
 
 class PasswordAuthStrategy {
-  constructor(buon, listKey, config) {
-    this.buon = buon;
+  constructor(ocop, listKey, config) {
+    this.ocop = ocop;
     this.listKey = listKey;
     this.gqlNames = {}; // Set by the auth provider
     this.config = {
@@ -15,10 +16,19 @@ class PasswordAuthStrategy {
       protectIdentities: true,
       ...config,
     };
+    const sessionOpts = {
+      cookie: {
+        secure: process.env.NODE_ENV === "production", // Default to true in production
+        maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+        sameSite: false,
+      },
+      ...config,
+    };
+    this.sessionManager = new SessionManager(sessionOpts);
   }
 
   getList() {
-    return this.buon.lists[this.listKey];
+    return this.ocop.lists[this.listKey];
   }
 
   getInputFragment() {
@@ -92,14 +102,12 @@ class PasswordAuthStrategy {
     // Identity failures with helpful errors
     if (results.length === 0) {
       const key = "[passwordAuth:identity:notFound]";
-      const message =
-        `${key} The ${identityField} provided didn't identify any ${list.plural}`;
+      const message = `${key} The ${identityField} provided didn't identify any ${list.plural}`;
       return { success: false, message };
     }
     if (results.length > 1) {
       const key = "[passwordAuth:identity:multipleFound]";
-      const message =
-        `${key} The ${identityField} provided identified ${results.length} ${list.plural}`;
+      const message = `${key} The ${identityField} provided identified ${results.length} ${list.plural}`;
       return { success: false, message };
     }
     const item = results[0];

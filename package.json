@@ -23,6 +23,9 @@
   "engines": {
     "node": "16"
   },
+  "dependencies": {
+    "@ocopjs/session": "^1.0.1"
+  },
   "devDependencies": {
     "express": "^4.17.1",
     "@semantic-release/commit-analyzer": "^11.1.0",

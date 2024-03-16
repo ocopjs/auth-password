@@ -22,7 +22,7 @@ address and password).
 Assuming a list of users such as:
 
 ```js
-buon.createList("User", {
+ocop.createList("User", {
   fields: {
     username: { type: Text },
     password: { type: Password },
@@ -30,10 +30,10 @@ buon.createList("User", {
 });
 ```
 
-We can configure the BuonJS auth strategy as:
+We can configure the OcopJS auth strategy as:
 
 ```js
-const authStrategy = buon.createAuthStrategy({
+const authStrategy = ocop.createAuthStrategy({
   type: PasswordAuthStrategy,
   list: "User",
   config: {
@@ -94,7 +94,7 @@ The build in `Password` field type fulfils this requirements.
 
 ### `protectIdentities`
 
-Generally, BuonJS strives to provide users with detailed error messages. In the
+Generally, OcopJS strives to provide users with detailed error messages. In the
 context of authentication this is often not desirable. Information about
 existing accounts can inadvertently leaked to malicious actors.
 
