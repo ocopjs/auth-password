@@ -1,7 +1,7 @@
 {
   "name": "@ocopjs/auth-password",
   "description": "OcopJS - Cung cấp cách xác thực cơ bản thông qua mật khẩu. 🇻🇳",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "ocopjs",
   "scripts": {
     "format": "prettier --write \"**/*.{ts,tsx,md,js}\"",
